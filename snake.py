@@ -8,7 +8,7 @@ class Snake():
         self.create_body()
         self.head = self.segments[0]
         
-    def create_body(self,):
+    def create_body(self):
         for position in STARTING_POSITIONS:         
             self.add_segment(position)
             
