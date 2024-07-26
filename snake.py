@@ -3,7 +3,7 @@ from const import *
 
 
 class Snake():
-    def __init__(self) -> None:
+    def __init__(self):
         self.segments = []
         self.create_body()
         self.head = self.segments[0]
