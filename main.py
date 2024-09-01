@@ -1,8 +1,8 @@
 from turtle import *
 import time 
-from snake import  Snake
-from food import Food
-from screen_function import ScoreBoard
+from game_elements.snake import  Snake
+from game_elements.food import Food
+from game_elements.score_board import ScoreBoard
 from const import *
 
 game_run = True
@@ -23,6 +23,7 @@ while game_run:
     screen.update()
     time.sleep(0.1)       
     snake.move()   
+
     #food colision
     if snake.head.distance(food) < 15:
         food.new_food()
@@ -31,11 +32,13 @@ while game_run:
     #colision with tail 
     for segment in snake.segments[1:]:
         if snake.head.distance(segment) < 10:
-            game_run = False
+            # game_run = False
+            snake.reset()
             score_board.end_game()
     #wall colision 
     if abs(snake.head.xcor()) > 380 or abs(snake.head.ycor()) > 380:
-        game_run = False
+        # game_run = False
+        snake.reset()
         score_board.end_game()
 
 screen.mainloop()

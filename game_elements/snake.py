@@ -3,7 +3,7 @@ from const import *
 
 
 class Snake():
-    def __init__(self) -> None:
+    def __init__(self):
         self.segments = []
         self.create_body()
         self.head = self.segments[0]
@@ -41,3 +41,8 @@ class Snake():
     def right(self):
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
+    
+    def reset(self):
+        self.segments.clear()
+        self.create_body()
+        self.head = self.segments[0]
