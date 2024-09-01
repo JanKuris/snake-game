@@ -14,4 +14,3 @@ LEFT = 180
 ALIGMENT = "center"  
 FONT = ('arial', 15, "normal")
 
-#sukuna
