@@ -21,7 +21,7 @@ screen.onkey(snake.left, "Left")
 
 while game_run:
     screen.update()
-    time.sleep(0.1)       
+    time.sleep(0.1)      
     snake.move()   
 
     #food colision
@@ -32,7 +32,6 @@ while game_run:
     #colision with tail 
     for segment in snake.segments[1:]:
         if snake.head.distance(segment) < 10:
-            # game_run = False
             snake.reset()
             score_board.end_game()
     #wall colision 

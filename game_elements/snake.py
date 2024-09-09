@@ -43,6 +43,8 @@ class Snake():
             self.head.setheading(RIGHT)
     
     def reset(self):
+        for segment in self.segments:
+            segment.hideturtle()
         self.segments.clear()
         self.create_body()
         self.head = self.segments[0]
