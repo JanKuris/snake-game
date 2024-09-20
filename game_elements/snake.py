@@ -8,9 +8,18 @@ class Snake():
         self.create_body()
         self.head = self.segments[0]
         
-    def create_body(self,):
+    def create_body(self):
         for position in STARTING_POSITIONS:         
             self.add_segment(position)
+
+    def hide_body(self):
+        for segment in self.segments:
+            segment.hideturtle()
+
+    def show_snake(self):
+        for segment in self.segments:
+            segment.showturtle()
+
             
     def add_segment(self, position):
         new_segment = Turtle("square")

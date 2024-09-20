@@ -25,13 +25,6 @@ class ScoreBoard(Turtle):
         self.score_value += 1
         self.clear()
         self.update_scoreboard()
-
-    def end_game(self):
-        if self.score_value > self.high_score_value:
-            self.high_score_value = self.score_value
-            self.save_high_score(self.high_score_value) 
-        self.goto(0, 0)
-        self.write("YOU FAIL", align= ALIGMENT, font=FONT)
         
 
     def load_high_score(self):
@@ -44,4 +37,11 @@ class ScoreBoard(Turtle):
     def save_high_score(self, new_high_score):
         with open("high_score.txt", "w") as file:
             file.write(str(new_high_score))
+    
+    def end_round(self):
+        if self.score_value > self.high_score_value:
+            self.high_score_value = self.score_value
+            self.save_high_score(self.high_score_value) 
+        self.goto(0, 0)
+        self.write("YOU FAIL", align= ALIGMENT, font=FONT)
     

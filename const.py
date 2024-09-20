@@ -13,5 +13,3 @@ LEFT = 180
 #score
 ALIGMENT = "center"  
 FONT = ('arial', 15, "normal")
-
-#zmena 
