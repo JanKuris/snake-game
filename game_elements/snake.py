@@ -12,7 +12,7 @@ class Snake():
         for position in STARTING_POSITIONS:         
             self.add_segment(position)
 
-    def hide_body(self):
+    def hide_snake(self):
         for segment in self.segments:
             segment.hideturtle()
 

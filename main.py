@@ -20,12 +20,19 @@ screen.onkey(snake.up,"Up")
 screen.onkey(snake.down, "Down")
 screen.onkey(snake.right, "Right")
 screen.onkey(snake.left, "Left")
-start_key = screen.onkey(menu.enter, "Return")
+screen.onkey(menu.play, "Return")
+screen.onkey(menu.play, 'r')
+
+def game_reset():
+    while not menu.game_active:
+        snake.hide_snake()
+        menu.end()
+        screen.update()
 
 while not menu.game_active:
-    snake.hide_body()
-    menu.start()
-    screen.update()
+        snake.hide_snake()
+        menu.start()
+        screen.update()
     
 while game_run:
     snake.show_snake()
@@ -40,10 +47,15 @@ while game_run:
     #colision with tail 
     for segment in snake.segments[1:]:
         if snake.head.distance(segment) < 10:
+            menu.game_active = False
+            game_reset()
             snake.reset()
-            score_board.end_round()
+            score_board.high_score_check()
     #wall colision 
     if abs(snake.head.xcor()) > 380 or abs(snake.head.ycor()) > 380:
-        score_board.end_round()
+        menu.game_active = False
+        game_reset()
+        score_board.high_score_check()
         snake.reset()
+        menu.end()
 screen.mainloop()

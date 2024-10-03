@@ -9,15 +9,20 @@ class Menu(Turtle):
         self.penup()
         self.pencolor('black')    
         self.game_active = False    
-
-    def enter(self):
+        
+    def play(self):
         self.clear()
         self.game_active = True
         return self.game
-        
-
+    
     def start(self):
         if self.game_active == False: 
             self.write("For start press 'Enter'", align= ALIGMENT, font=FONT)
+    
+    def end(self):
+        if self.game_active == False: 
+            self.write("You fail. For reset game press 'r'", align= ALIGMENT, font=FONT)
+
             
 
+3
