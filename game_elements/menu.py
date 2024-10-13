@@ -13,7 +13,7 @@ class Menu(Turtle):
     def play(self):
         self.clear()
         self.game_active = True
-        return self.game
+        return self.game_active
     
     def start(self):
         if self.game_active == False: 

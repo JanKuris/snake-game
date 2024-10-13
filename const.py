@@ -13,3 +13,12 @@ LEFT = 180
 #score
 ALIGMENT = "center"  
 FONT = ('arial', 15, "normal")
+
+#snake 
+SNAKE_COLOR = "black"
+SNAKE_SHAPE = "circle"
+
+#food 
+FOOD_SHAPE = "circle"
+FOOD_COLOR = "red"
+FOOD_RENDERING = "fastest"

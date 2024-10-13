@@ -1,5 +1,4 @@
 from turtle import * 
-from const import SCREEN_WIDTH, SCREEN_HEIGHT
 from const import *
 import os
 
@@ -15,24 +14,30 @@ class ScoreBoard(Turtle):
         self.update_scoreboard()
 
     def update_scoreboard(self):
-        self.goto(-100, SCREEN_WIDTH - 450)
-        self.write(f"Score:{self.score_value}", align= ALIGMENT, font=FONT)
-        self.goto(80, SCREEN_WIDTH - 450)
-        self.write(f"High Score: {self.high_score_value}", align= ALIGMENT, font=FONT)
+        self.clear()
+        self.display_score(f"Score:{self.score_value}", -100, SCREEN_WIDTH - 450)
+        self.display_score(f"High Score: {self.high_score_value}", 80, SCREEN_WIDTH - 450) 
+
+    def display_score(self, text, x, y):
+        self.goto(x,y)
+        self.write(text, align=ALIGMENT, font=FONT)
 
     def increase_score(self):
         self.score_value += 1
-        self.clear()
         self.update_scoreboard()
         
 
     def load_high_score(self):
-        if os.path.exists("high_score.txt"):
-            with open("high_score.txt", "r") as file:
-                return int(file.read())
-        else:
-            return 0
-        
+        try:
+
+            if os.path.exists("high_score.txt"):
+                with open("high_score.txt", "r") as file:
+                    return int(file.read())
+            else:
+                return 0
+        except(ValueError, IOError):
+            return 0 # If file is empty or corrupt, set high score to 0
+            
     def save_high_score(self, new_high_score):
         with open("high_score.txt", "w") as file:
             file.write(str(new_high_score))
@@ -41,5 +46,7 @@ class ScoreBoard(Turtle):
         if self.score_value > self.high_score_value:
             self.high_score_value = self.score_value
             self.save_high_score(self.high_score_value) 
-        self.goto(0, 0)
     
+    def reset_score(self):
+        self.score_value = 0
+        self.update_scoreboard()
